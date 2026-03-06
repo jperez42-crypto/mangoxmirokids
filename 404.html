@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Redirigint...</title>
+  <script>
+    const WEBAPP = "https://script.google.com/macros/s/AKfycbwvFv8n_31zNnbwlZPA3UkPQSVayuTIeyZjiqc_q6bJe4wSIqyrY5UkLXYII43IT_yS/exec";
+
+    const path = window.location.pathname.replace(/^\/+|\/+$/g, "");
+    const parts = path.split("/");
+    const code = parts[parts.length - 1];
+
+    if (code) {
+      window.location.replace(WEBAPP + "?i=" + encodeURIComponent(code));
+    } else {
+      document.addEventListener("DOMContentLoaded", () => {
+        document.body.innerHTML = `
+          <div style="font-family:Arial,sans-serif;padding:40px;text-align:center">
+            <h2>Falta identificador</h2>
+            <p>Afegeix un codi al final de l’adreça, per exemple /P001</p>
+          </div>
+        `;
+      });
+    }
+  </script>
+</head>
+<body>
+  <p style="font-family:Arial,sans-serif;padding:40px;text-align:center">Redirigint...</p>
+</body>
+</html>
